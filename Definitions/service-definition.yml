@@ -6,8 +6,8 @@ spec:
     type: NodePort
     ports:
     - targetPort: 80 # if is not provided assumed is the same as port
-      port: 80 #mndatory
-      nodePort: 30008
+      port: 80 #mandatory
+      nodePort: 30008 # external port accesing using NodePort, if is not proviced automatically use range 30000-32767
     selector: # identify the pods
         app: myapp
         type: front-end

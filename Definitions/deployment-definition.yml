@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: myapp-deployment
+    labels: 
+        app: my-app
+        type: front-end
+spec:
+    template: # Pod template, same structure pod-definition.yml
+
+        metadata:
+            name: myapp-pod
+            labels:
+                app: myapp
+                type: front-end
+        spec:
+            containers:
+                - name: nginx-container
+                  image: nginx
+    
+    replicas: 3 # number of replicas
+    
+    selector: # Select what pods added
+        matchLabels:
+            type: front-end
+
+# kubectl create -f deployment-definition.yml # deployment automaticaly create a replicaset
+# kubectl apply -f deployment-definition.yml
+# kubectl scale --replicas=6 -f deployment-definition.yml
+# kubectl autoscale deployment appdeployment --min=10 --max=15 --cpu-percent=80
+# kubectl get deployments
+# kubectl get replicaset
+# kubectl get pods
+
+# Update and rollback
+# kubectl rollout status deployment/myapp-deployment
+# kubectl rollout history deployment/myapp-deployment # get revisions
+# kubectl rollout undo deployment/myapp-deployment

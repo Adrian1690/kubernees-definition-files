@@ -11,9 +11,9 @@ spec:
         - name: postgres
           image: postgres:9.4
           env:
-          - name: POSTGRES_USERNAME
-            value: 'initdb'
+          - name: POSTGRES_USER
+            value: postgres
           - name: POSTGRES_PASSWORD # necessary to avoid CrashLoopBackOff error
-            value: 'postgres'
+            value: postgres
           ports:
             - containerPort: 5432

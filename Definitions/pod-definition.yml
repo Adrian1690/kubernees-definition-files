@@ -12,7 +12,8 @@ spec:
     containers:
         - name: nginx-container
           image: nginx
-
+          #ports: # map ports exposed in container
+          #  - containerPort: 8080 # port exposed in container
 
 # delete pod by label
 # kubectl delete pods -l name=busybox-pod

@@ -1,0 +1,19 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: reporting-cron-job
+spec:
+  schedule: "*/1 * * * *" # Cron standard
+  jobTemplate:
+    spec: 
+      completions: 3
+      parallelism: 3
+      template:
+        spec:
+        # Pod templates without metadata
+          containers:
+            - name: reporting-tool
+              image: reporting-tool
+          restartPolicy: Never # Default is Always, when pod is exited Never restart.
+
+

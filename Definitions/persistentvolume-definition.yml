@@ -1,0 +1,16 @@
+# pv-definition.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata: 
+  name: pv-vol1
+spec:
+  accessModes: # Define how volume should be mounted on the host
+	  - ReadWriteOnce
+	capacity: # specify the mount of torage to be reserved
+		storage: 1Gi
+	hostPath: # Volume type, not use in production environment
+    path: /tmp/data
+	# or
+#	awsElasticBlockStore:
+#			volumeID: <id-volume>
+#			fsType: ext4
